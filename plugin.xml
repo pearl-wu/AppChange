@@ -15,19 +15,20 @@
     <issue></issue>
     <license></license>
     <preference name="URL_SCHEME" />
+	
     <engines>
         <engine name="cordova" version=">=3.0.0" />
     </engines>
     
-    <js-module src="www/AppAvailability.js" name="AppAvailability">
-        <clobbers target="appAvailability" />
+    <js-module src="www/AppChange.js" name="AppChange">
+        <clobbers target="AppChange" />
     </js-module>
     
-    <!-- iOS 
+    <!-- iOS -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="AppAvailability">
-                <param name="ios-package" value="AppAvailability" />
+            <feature name="AppChange">
+                <param name="ios-package" value="AppChange" />
             </feature>
         </config-file>
 		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
@@ -41,19 +42,19 @@
 		  </array>
 		</config-file>
         
-        <header-file src="src/ios/AppAvailability.h" />
-        <source-file src="src/ios/AppAvailability.m" />
-    </platform>-->
+        <header-file src="src/ios/AppChange.h" />
+        <source-file src="src/ios/AppChange.m" />
+    </platform>
     
     <!-- Android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="AppAvailability">
-                <param name="android-package" value="com.ohh2ahh.appavailability.AppAvailability" />
+            <feature name="AppChange">
+                <param name="android-package" value="tw.com.bais.AppChange" />
             </feature>
         </config-file>
 		
-		<config-file target="AndroidManifest.xml" parent="/*/application/activity">
+		<config-file target="AndroidManifest.xml" parent="/*">
 		  <intent-filter>
 			<data android:scheme="$URL_SCHEME"/>
 			<action android:name="android.intent.action.VIEW" />
@@ -62,7 +63,7 @@
 		  </intent-filter>
 		</config-file>
         
-        <source-file src="src/android/AppAvailability.java" target-dir="src/com/ohh2ahh/appavailability/" />
+        <source-file src="src/android/AppChange.java" target-dir="tw/com/bais/AppChange/" />
     </platform>
     
 </plugin>
