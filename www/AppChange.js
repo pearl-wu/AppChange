@@ -1,38 +1,40 @@
 var AppChange = {
-    
+	
+	//successCallback -> successCallback
+    //errorCallback -> errorCallback
 	//檢查APP是否存在
-    check: function(uriScheme, qno, successCallback, errorCallback) {
+    check: function(Scheme, qno, successCallback, errorCallback) {
         cordova.exec(
-            successCallback,	//successCallback
-            errorCallback,		//errorCallback
+            successCallback,
+            errorCallback,
             "AppChange",
             "check",
-            [uriScheme,qno]
+            [Scheme,qno]
         );
     },
 	//不存在執行安裝
-	GOapprul:function(uriScheme, successCallback, errorCallback) {
+	GOapprul:function(Scheme, successCallback, errorCallback) {
         cordova.exec(
             successCallback,
             errorCallback,
             "AppChange",
             "goAPPurl",
-            [uriScheme]
+            [Scheme]
         );
     },
 	//開啟指定APP
-	OPENapp:function(uriScheme, successCallback, errorCallback){
-	cordova.exec(
+	OPENapp:function(Scheme, successCallback, errorCallback){
+		cordova.exec(
             successCallback,
             errorCallback,
             "AppChange",
             "toAPPopen",
-            [uriScheme]
+            [Scheme]
         );		
 	},
 	//接受傳值
 	INport:function(Scheme, successCallback, errorCallback){
-	cordova.exec(
+		cordova.exec(
             successCallback,
             errorCallback,
             "AppChange",
