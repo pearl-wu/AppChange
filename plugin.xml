@@ -63,7 +63,7 @@
 		  </intent-filter>
 		</config-file>
         
-        <source-file src="src/android/AppChange.java" target-dir="src/tw/com/bais/" />
+        <source-file src="src/android/AppChange.java" target-dir="src/tw/com/bais/AppChange/" />
     </platform>
     
 </plugin>
