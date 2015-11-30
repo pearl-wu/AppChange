@@ -25,7 +25,7 @@ public class AppChange extends CordovaPlugin {
 	        }
 	        
 	        if(action.equals("Inport")) {
-				Toast.makeText(cordova.getActivity().getApplicationContext(), "inport", Toast.LENGTH_LONG).show();
+				//Toast.makeText(cordova.getActivity().getApplicationContext(), "inport", Toast.LENGTH_LONG).show();
 	        	Intent intent = this.cordova.getActivity().getIntent();
 	        	String scheme = intent.getScheme();
 	        	if( scheme != null ){
@@ -79,10 +79,10 @@ public class AppChange extends CordovaPlugin {
 			
 		private void checkAvailability(String uri, String id, CallbackContext callbackContext) {
 			if(appInstalled(id)){
-				Toast.makeText(cordova.getActivity().getApplicationContext(), uri, Toast.LENGTH_LONG).show();
+				//Toast.makeText(cordova.getActivity().getApplicationContext(), uri, Toast.LENGTH_LONG).show();
 	            callbackContext.success(uri);				
 			}else{
-				Toast.makeText(cordova.getActivity().getApplicationContext(), id, Toast.LENGTH_LONG).show();	
+				//Toast.makeText(cordova.getActivity().getApplicationContext(), id, Toast.LENGTH_LONG).show();	
 	        	callbackContext.error(id);				
 			}
 	    }
