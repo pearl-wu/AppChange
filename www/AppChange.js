@@ -9,7 +9,7 @@ var AppChange = {
             errorCallback,
             "AppChange",
             "check",
-            [Scheme,id]
+            [uri, id]
         );
     },
 	//不存在執行安裝

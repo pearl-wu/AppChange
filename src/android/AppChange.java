@@ -77,6 +77,15 @@ public class AppChange extends CordovaPlugin {
 		
 
 			
+		private void checkAvailability(String uri, String id, CallbackContext callbackContext) {
+			if(appInstalled(id)){
+				Toast.makeText(cordova.getActivity().getApplicationContext(), uri, Toast.LENGTH_LONG).show();
+	            callbackContext.success(uri);				
+			}else{
+				Toast.makeText(cordova.getActivity().getApplicationContext(), id, Toast.LENGTH_LONG).show();	
+	        	callbackContext.error(id);				
+			}
+	    }
 		public boolean appInstalled(String uri) {
 	        Context ctx = this.cordova.getActivity().getApplicationContext();
 	        final PackageManager pm = ctx.getPackageManager();
@@ -89,37 +98,6 @@ public class AppChange extends CordovaPlugin {
 	            app_installed = false;
 	        }
 	        return app_installed;
-	    }
-	    
-
-
-		private void checkAvailability(String uri, String id, CallbackContext callbackContext) {
-	    	Context ctx = this.cordova.getActivity().getApplicationContext();
-	    	final PackageManager pm = ctx.getPackageManager();
-	    	try {
-	    		PackageInfo pi = pm.getPackageInfo(id, PackageManager.GET_ACTIVITIES);
-	            
-	           // Intent ii = Intent.parseUri(uri, Intent.URI_INTENT_SCHEME);
-	           // ComponentName component = ii.resolveActivity(ctx.getPackageManager());
-	            Toast.makeText(cordova.getActivity().getApplicationContext(), uri, Toast.LENGTH_LONG).show();
-	            
-	            callbackContext.success(uri);
-	        }
-	        catch(PackageManager.NameNotFoundException e) {
-	        	callbackContext.error(id);
-	        	
-	        }
-	    	
-	        /*try {
-	            	Toast.makeText(cordova.getActivity().getApplicationContext(), component.getPackageName(), Toast.LENGTH_LONG).show();
-	            	//Toast.makeText(cordova.getActivity().getApplicationContext(), component.toShortString(), Toast.LENGTH_LONG).show();
-	            if(component != null){
-	            	callbackContext.success(uri);
-	            }else{
-	            	callbackContext.error("");
-	            }
-	        }catch(URISyntaxException e) {}*/
-
 	    }
 
 }
