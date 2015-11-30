@@ -23,13 +23,13 @@ var AppChange = {
         );
     },
 	//開啟指定APP
-	OPENapp:function(Scheme, successCallback, errorCallback){
+	OPENapp:function(Scheme, mgs, successCallback, errorCallback){
 		cordova.exec(
             successCallback,
             errorCallback,
             "AppChange",
             "toAPPopen",
-            [Scheme]
+            [Scheme+mgs]
         );		
 	},
 	//接受傳值
