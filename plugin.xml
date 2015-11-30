@@ -48,13 +48,13 @@
     
     <!-- Android -->
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*/application/activity">
+        <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AppChange">
                 <param name="android-package" value="tw.com.bais.appchange.AppChange" />
             </feature>
         </config-file>
 		
-		<config-file target="AndroidManifest.xml" parent="/*">
+		<config-file target="AndroidManifest.xml" parent="/*/application/activity">
 		  <intent-filter>
 			<data android:scheme="$URL_SCHEME"/>
 			<action android:name="android.intent.action.VIEW" />
