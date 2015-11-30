@@ -1,4 +1,4 @@
-package tw.com.bais.appchange;
+package tw.com.bais;
 
 import java.net.URISyntaxException;
 
@@ -8,37 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.widget.Toast;
 
 public class AppChange extends CordovaPlugin {
-    @SuppressLint({ "NewApi", "InlinedApi" }) @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if(action.equals("check")) {
-            String uri = args.getString(0);
-            if(uri != ""){
-            	//callbackContext.success(uri);
-            	checkAvailability(uri, callbackContext);
-            }
-           /*Context ctx = this.cordova.getActivity().getApplicationContext();
-            try {
-             	Intent ii = Intent.parseUri(uri, Intent.URI_INTENT_SCHEME);
-                 ComponentName component = ii.resolveActivity(ctx.getPackageManager());
-                 	//Toast.makeText(cordova.getActivity().getApplicationContext(), component.toShortString(), Toast.LENGTH_LONG).show();
-                 if(component != null){
-                 	callbackContext.success(uri);
-                 	Toast.makeText(cordova.getActivity().getApplicationContext(), component.getPackageName(), Toast.LENGTH_LONG).show();
-                 }else{
-                 	 callbackContext.error("未");
-                 }
-             }catch(URISyntaxException e) {}*/
+            String uri = args.getString(0);  
+            checkAvailability(uri, callbackContext);
             return true;
         }
         
         if(action.equals("Inport")) {
+			Toast.makeText(cordova.getActivity().getApplicationContext(), "inport", Toast.LENGTH_LONG).show();
         	Intent intent = this.cordova.getActivity().getIntent();
         	String scheme = intent.getScheme();
         	if( scheme != null ){
@@ -90,7 +77,7 @@ public class AppChange extends CordovaPlugin {
 	
 
 		
-	/*public boolean appInstalled(String uri) {
+	public boolean appInstalled(String uri) {
         Context ctx = this.cordova.getActivity().getApplicationContext();
         final PackageManager pm = ctx.getPackageManager();
         boolean app_installed = false;
@@ -102,26 +89,30 @@ public class AppChange extends CordovaPlugin {
             app_installed = false;
         }
         return app_installed;
-    }*/
-
+    }
+    
 
 
 	private void checkAvailability(String uri, CallbackContext callbackContext) {
-		Context ctx = this.cordova.getActivity().getApplicationContext();
+    	Context ctx = this.cordova.getActivity().getApplicationContext();
     	final PackageManager pm = ctx.getPackageManager();
     	try {
     		PackageInfo pi = pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-    		//callbackContext.success(pi.toString());
-           /* if(pi != null){
-            	//存在URI
-             	callbackContext.success(pi.sharedUserLabel);
-             	Toast.makeText(cordova.getActivity().getApplicationContext(), pi.sharedUserLabel, Toast.LENGTH_LONG).show();
-             }else{
-            	//不存在ID
-             	callbackContext.error(pi.packageName);
-             	Toast.makeText(cordova.getActivity().getApplicationContext(), pi.packageName, Toast.LENGTH_LONG).show();
-             }*/
-        }catch(PackageManager.NameNotFoundException e) {}
+            callbackContext.success(pi.versionName);
+        }
+        catch(PackageManager.NameNotFoundException e) {}
+    	
+        /*try {
+        	Intent ii = Intent.parseUri(uri, Intent.URI_INTENT_SCHEME);
+            ComponentName component = ii.resolveActivity(ctx.getPackageManager());
+            	Toast.makeText(cordova.getActivity().getApplicationContext(), component.getPackageName(), Toast.LENGTH_LONG).show();
+            	//Toast.makeText(cordova.getActivity().getApplicationContext(), component.toShortString(), Toast.LENGTH_LONG).show();
+            if(component != null){
+            	callbackContext.success(uri);
+            }else{
+            	callbackContext.error("");
+            }
+        }catch(URISyntaxException e) {}*/
+
     }
-	
 }
