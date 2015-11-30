@@ -48,7 +48,7 @@
     
     <!-- Android -->
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file target="res/xml/config.xml" parent="/*/application/activity">
             <feature name="AppChange">
                 <param name="android-package" value="tw.com.bais.appchange.AppChange" />
             </feature>
