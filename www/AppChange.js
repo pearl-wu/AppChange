@@ -3,13 +3,13 @@ var AppChange = {
 	//successCallback -> successCallback
     //errorCallback -> errorCallback
 	//檢查APP是否存在
-    check: function(Scheme, qno, successCallback, errorCallback) {
+    check: function(Scheme, successCallback, errorCallback) {
         cordova.exec(
             successCallback,
             errorCallback,
             "AppChange",
             "check",
-            [Scheme,qno]
+            [Scheme]
         );
     },
 	//不存在執行安裝

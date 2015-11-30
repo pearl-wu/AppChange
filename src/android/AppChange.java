@@ -20,8 +20,23 @@ public class AppChange extends CordovaPlugin {
     @SuppressLint({ "NewApi", "InlinedApi" }) @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if(action.equals("check")) {
-            String uri = args.getString(0);  
-            checkAvailability(uri, callbackContext);
+            String uri = args.getString(0);
+            if(uri != ""){
+            	//callbackContext.success(uri);
+            	checkAvailability(uri, callbackContext);
+            }
+           /*Context ctx = this.cordova.getActivity().getApplicationContext();
+            try {
+             	Intent ii = Intent.parseUri(uri, Intent.URI_INTENT_SCHEME);
+                 ComponentName component = ii.resolveActivity(ctx.getPackageManager());
+                 	//Toast.makeText(cordova.getActivity().getApplicationContext(), component.toShortString(), Toast.LENGTH_LONG).show();
+                 if(component != null){
+                 	callbackContext.success(uri);
+                 	Toast.makeText(cordova.getActivity().getApplicationContext(), component.getPackageName(), Toast.LENGTH_LONG).show();
+                 }else{
+                 	 callbackContext.error("未");
+                 }
+             }catch(URISyntaxException e) {}*/
             return true;
         }
         
@@ -77,7 +92,7 @@ public class AppChange extends CordovaPlugin {
 	
 
 		
-	public boolean appInstalled(String uri) {
+	/*public boolean appInstalled(String uri) {
         Context ctx = this.cordova.getActivity().getApplicationContext();
         final PackageManager pm = ctx.getPackageManager();
         boolean app_installed = false;
@@ -89,30 +104,26 @@ public class AppChange extends CordovaPlugin {
             app_installed = false;
         }
         return app_installed;
-    }
-    
+    }*/
+
 
 
 	private void checkAvailability(String uri, CallbackContext callbackContext) {
-    	Context ctx = this.cordova.getActivity().getApplicationContext();
+		Context ctx = this.cordova.getActivity().getApplicationContext();
     	final PackageManager pm = ctx.getPackageManager();
     	try {
     		PackageInfo pi = pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            callbackContext.success(pi.versionName);
-        }
-        catch(PackageManager.NameNotFoundException e) {}
-    	
-        /*try {
-        	Intent ii = Intent.parseUri(uri, Intent.URI_INTENT_SCHEME);
-            ComponentName component = ii.resolveActivity(ctx.getPackageManager());
-            	Toast.makeText(cordova.getActivity().getApplicationContext(), component.getPackageName(), Toast.LENGTH_LONG).show();
-            	//Toast.makeText(cordova.getActivity().getApplicationContext(), component.toShortString(), Toast.LENGTH_LONG).show();
-            if(component != null){
-            	callbackContext.success(uri);
-            }else{
-            	callbackContext.error("");
-            }
-        }catch(URISyntaxException e) {}*/
-
+    		callbackContext.success(pi.toString());
+           /* if(pi != null){
+            	//存在URI
+             	callbackContext.success(pi.sharedUserLabel);
+             	Toast.makeText(cordova.getActivity().getApplicationContext(), pi.sharedUserLabel, Toast.LENGTH_LONG).show();
+             }else{
+            	//不存在ID
+             	callbackContext.error(pi.packageName);
+             	Toast.makeText(cordova.getActivity().getApplicationContext(), pi.packageName, Toast.LENGTH_LONG).show();
+             }*/
+        }catch(PackageManager.NameNotFoundException e) {}
     }
+	
 }
