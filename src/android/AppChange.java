@@ -1,4 +1,4 @@
-package tw.com.bais;
+package tw.com.bais.appchange;
 
 import java.net.URISyntaxException;
 
@@ -8,13 +8,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.widget.Toast;
 
 public class AppChange extends CordovaPlugin {
     @SuppressLint({ "NewApi", "InlinedApi" }) @Override
@@ -113,7 +111,7 @@ public class AppChange extends CordovaPlugin {
     	final PackageManager pm = ctx.getPackageManager();
     	try {
     		PackageInfo pi = pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-    		callbackContext.success(pi.toString());
+    		//callbackContext.success(pi.toString());
            /* if(pi != null){
             	//¦s¦bURI
              	callbackContext.success(pi.sharedUserLabel);
