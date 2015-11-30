@@ -25,11 +25,12 @@ public class AppChange extends CordovaPlugin {
 	        }
 	        
 	        if(action.equals("Inport")) {
-				//Toast.makeText(cordova.getActivity().getApplicationContext(), "inport", Toast.LENGTH_LONG).show();
 	        	Intent intent = this.cordova.getActivity().getIntent();
-	        	String scheme = intent.getScheme();
-	        	if( scheme != null ){
-	            	callbackContext.success(scheme);        		
+	        	String mmg = intent.getDataString();
+	        	
+	        	if( mmg != null ){
+	        		//Toast.makeText(cordova.getActivity().getApplicationContext(), mmg, Toast.LENGTH_LONG).show();
+	            	callbackContext.success(mmg);   
 	        	}
 	            return true;
 	        }
