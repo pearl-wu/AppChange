@@ -42,20 +42,12 @@ public class AppChange extends CordovaPlugin {
 	     	   this.goAppUrl(url);
 	        } 
 	       
-		    if(action.equals("toAPPopen")) {
-		 	   	String mag = args.getString(0);
-		 	   	Intent i;
-				try {
-					i = Intent.parseUri(mag, Intent.URI_INTENT_SCHEME);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					this.cordova.getActivity().startActivity(i);
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					callbackContext.error("- Open APP ERROR!! -");
-				}      
-		        return true;
-		    }       
+		if(action.equals("toAPPopen")) {
+	 	   String scheme = args.getString(0);
+		   String parameter = args.getString(0);
+		   OPENapp(scheme, parameter, callbackContext);		 	  
+		   return true;
+	    	}       
 	        return false;
 	    }
 	
