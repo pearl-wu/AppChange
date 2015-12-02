@@ -8,6 +8,7 @@
 ```
 
 
+```javascript
 var app = {		// Application Constructor
   initialize: function() {
     document.addEventListener('deviceready', this.receivedEvent, false);
@@ -16,9 +17,9 @@ var app = {		// Application Constructor
   			......
 	}
 };
+```
 
-
-
+```javascript
 AppChange.INport(
   Scheme,
   function(){},		// Success callback
@@ -44,5 +45,5 @@ AppChange.OPENapp(
   function(){},			// Success callback
   function(data){}	// Error callback
 );
-
+```
 
