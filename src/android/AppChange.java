@@ -25,17 +25,18 @@ public class AppChange extends CordovaPlugin {
 	        }
 	        
 	        if(action.equals("Inport")) {
-	        	Intent intent = this.cordova.getActivity().getIntent();
-	        	String mmg = intent.getDataString();
-	        	
-	        	if( mmg != null ){
-	        		//Toast.makeText(cordova.getActivity().getApplicationContext(), mmg, Toast.LENGTH_LONG).show();
-	            	callbackContext.success(mmg);   
+		   Intent intent = this.cordova.getActivity().getIntent();
+	           String mmg = intent.getDataString();
+	           Bundle bundle = intent.getExtras();
+	        	if(bundle.isEmpty()){
+	        		Toast.makeText(cordova.getActivity().getApplicationContext(), bundle.getString("data"), Toast.LENGTH_LONG).show();
+	        	}else if( mmg.isEmpty() ){
+	        		Toast.makeText(cordova.getActivity().getApplicationContext(), mmg, Toast.LENGTH_LONG).show();
+	            	callbackContext.success(mmg);
 	        	}
 	            return true;
 	        }
-	        
-	        
+
 	        if(action.equals("goAPPurl")) {
 	     	   String url = args.getString(0);  
 	     	   this.goAppUrl(url);
@@ -57,39 +58,66 @@ public class AppChange extends CordovaPlugin {
 		    }       
 	        return false;
 	    }
-
-
-			private void goAppUrl(String message){ 
-				Intent it = new Intent(Intent.ACTION_VIEW); 
-				it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			
-				try {
-					it.setData(Uri.parse("market://details?id="+message));
-					
-				}catch(android.content.ActivityNotFoundException anfe){
-					it.setData(Uri.parse("https://play.google.com/store/apps/details?"+message));
-				}
-			    this.cordova.startActivityForResult(this, it, 0); 
-			    /*
-			      UripackageURI = Uri.parse("package: your.app.id");
-				  Intent intent =new Intent(Intent.ACTION_DELETE);
-			    */
+	
+	    private boolean OPENapp(String sc, String par, CallbackContext callbackContext){
+		if(sc.matches("^[a-z0-9-]://")){
+			Intent i;
+			try {
+				i = Intent.parseUri(sc+par, Intent.URI_INTENT_SCHEME);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				this.cordova.getActivity().startActivity(i);
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				callbackContext.error("- Open APP ERROR!! -");
+			}      
+		  return true;
+		}else{
+	        Context ctx = this.cordova.getActivity().getApplicationContext();
+	        PackageManager pm = ctx.getPackageManager();
+	        PackageInfo info = pm.getPackageArchiveInfo(sc, PackageManager.GET_ACTIVITIES);	        
+	        try  {  
+	        	Intent intent = new Intent();
+	        	if (intent != null) {
+	        	  intent = pm.getLaunchIntentForPackage(sc);
+	        	  intent.addCategory(Intent.CATEGORY_LAUNCHER);
+	        	  intent.putExtra("data", par);
+	        	  this.cordova.getActivity().startActivity(intent);
+	        	}else{
+	        		Toast.makeText(cordova.getActivity().getApplicationContext(), "啟動失敗", Toast.LENGTH_LONG).show();
+	        	}
+	        }catch (ActivityNotFoundException e)  {
+	        	      e.printStackTrace();
+	        }
+		  return true;
+		}
+	     }
+	
+	     private void goAppUrl(String message){ 
+		Intent it = new Intent(Intent.ACTION_VIEW); 
+		it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			try {
+				it.setData(Uri.parse("market://details?id="+message));
+			}catch(android.content.ActivityNotFoundException anfe){
+				it.setData(Uri.parse("https://play.google.com/store/apps/details?"+message));
 			}
+		this.cordova.startActivityForResult(this, it, 0); 
+	     }
 		
 
 			
-		private void checkAvailability(String uri, String id, CallbackContext callbackContext) {
-			if(appInstalled(id)){
-				//Toast.makeText(cordova.getActivity().getApplicationContext(), uri, Toast.LENGTH_LONG).show();
-	            callbackContext.success(uri);				
-			}else{
-				//Toast.makeText(cordova.getActivity().getApplicationContext(), id, Toast.LENGTH_LONG).show();	
-	        	callbackContext.error(id);				
-			}
+	     private void checkAvailability(String uri, String id, CallbackContext callbackContext) {
+		if(appInstalled(id)){
+			//Toast.makeText(cordova.getActivity().getApplicationContext(), uri, Toast.LENGTH_LONG).show();
+            		callbackContext.success(uri);				
+		}else{
+			//Toast.makeText(cordova.getActivity().getApplicationContext(), id, Toast.LENGTH_LONG).show();	
+        		callbackContext.error(id);				
+		}
 	    }
-		public boolean appInstalled(String uri) {
+	    public boolean appInstalled(String uri) {
 	        Context ctx = this.cordova.getActivity().getApplicationContext();
-	        final PackageManager pm = ctx.getPackageManager();
+	        PackageManager pm = ctx.getPackageManager();
 	        boolean app_installed = false;
 	        try {
 	            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
@@ -100,5 +128,4 @@ public class AppChange extends CordovaPlugin {
 	        }
 	        return app_installed;
 	    }
-
 }
