@@ -52,7 +52,7 @@ public class AppChange extends CordovaPlugin {
 	    	}       
 	        return false;
 	    }
-	
+	    @SuppressWarnings("unused")
 	    private boolean OPENapp(String sc, String par, CallbackContext callbackContext){
 		if(sc.matches("^[a-z0-9-]://")){
 			Intent i;
@@ -78,7 +78,7 @@ public class AppChange extends CordovaPlugin {
 	        	  intent.putExtra("data", par);
 	        	  this.cordova.getActivity().startActivity(intent);
 	        	}else{
-	        		Toast.makeText(cordova.getActivity().getApplicationContext(), "���仃���", Toast.LENGTH_LONG).show();
+	        		Toast.makeText(cordova.getActivity().getApplicationContext(), "啟動失敗",Toast.LENGTH_LONG).show();
 	        	}
 	        }catch (ActivityNotFoundException e)  {
 	        	      e.printStackTrace();
