@@ -1,11 +1,11 @@
 
 #AppChange
 
-
+```javascript
 <script type="text/javascript">
      app.initialize();	
 </script>
-
+```
 
 
 var app = {		// Application Constructor
