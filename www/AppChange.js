@@ -33,10 +33,9 @@ var AppChange = {
         );		
 	},
 	//接受傳值
-	INport:function(Scheme, successCallback, errorCallback){
+	INport:function(successCallback){
 		cordova.exec(
             successCallback,
-            errorCallback,
             "AppChange",
             "Inport",
             []
