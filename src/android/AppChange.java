@@ -7,12 +7,14 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.widget.Toast;
 
 public class AppChange extends CordovaPlugin {
@@ -76,7 +78,7 @@ public class AppChange extends CordovaPlugin {
 	        	  intent.putExtra("data", par);
 	        	  this.cordova.getActivity().startActivity(intent);
 	        	}else{
-	        		Toast.makeText(cordova.getActivity().getApplicationContext(), "啟動失敗", Toast.LENGTH_LONG).show();
+	        		Toast.makeText(cordova.getActivity().getApplicationContext(), "���仃���", Toast.LENGTH_LONG).show();
 	        	}
 	        }catch (ActivityNotFoundException e)  {
 	        	      e.printStackTrace();
