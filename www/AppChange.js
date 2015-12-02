@@ -29,7 +29,7 @@ var AppChange = {
             errorCallback,
             "AppChange",
             "toAPPopen",
-            [Scheme+mgs]
+            [Scheme,mgs]
         );		
 	},
 	//接受傳值
