@@ -1,7 +1,9 @@
 #import <Cordova/CDV.h>
 
-@interface AppAvailability : CDVPlugin
+@interface AppChange : CDVPlugin
 
-- (void)checkAvailability:(CDVInvokedUrlCommand*)command;
-
+- (void)check:(CDVInvokedUrlCommand*)command;
+- (void)Inport:(CDVInvokedUrlCommand*)command;
+- (void)toAPPopen:(CDVInvokedUrlCommand*)command;
+- (void)goAPPurl:(CDVInvokedUrlCommand*)command;
 @end
