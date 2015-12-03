@@ -1,4 +1,4 @@
-#import "AppAvailability.h"
+#import "AppChange.h"
 #import <Cordova/CDV.h>
 
 @implementation AppChange
