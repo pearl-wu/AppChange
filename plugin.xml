@@ -41,9 +41,7 @@
 			</dict>
 		  </array>
 		</config-file>
-        
-        <header-file src="src/ios/AppChange.h" />
-        <source-file src="src/ios/AppChange.m" />
+        <source-file src="src/ios/AppChange.swift" />
     </platform>
     
     <!-- Android -->
