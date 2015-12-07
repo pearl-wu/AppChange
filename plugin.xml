@@ -36,7 +36,7 @@
 		<dict><key>CFBundleURLSchemes</key><array><string>$URL_SCHEME</string></array></dict>
 	  </array>
 	</config-file>
-	<source-file src="src/ios/AppChange.swift" />
+
     </platform>
     
     <!-- Android -->
