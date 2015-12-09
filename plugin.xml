@@ -44,7 +44,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AppChange">
-                <param name="android-package" value="tw.com.bais.appchange.AppChange" />
+                <param name="android-package" value="tw.com.bais.AppChange" />
             </feature>
         </config-file>
 		
@@ -57,7 +57,7 @@
 		  </intent-filter>
 		</config-file>
         
-        <source-file src="src/android/AppChange.java" target-dir="src/tw/com/bais/appchange/" />
+        <source-file src="src/android/AppChange.java" target-dir="src/tw/com/bais/" />
     </platform>
     
 </plugin>
