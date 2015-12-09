@@ -27,7 +27,7 @@
     <!-- iOS -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="AppChange">
+            <feature>
                 <param name="ios-package" value="AppChange" />
             </feature>
         </config-file>
