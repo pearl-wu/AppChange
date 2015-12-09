@@ -26,13 +26,17 @@
     
     <!-- iOS -->
     <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature>
-                <param name="ios-package" value="AppChange" />
-            </feature>
-        </config-file>
-        <header-file src="src/ios/AppChange-Bridging-Header.h" />
-        <source-file src="src/ios/AppChange.swift"/>
+     	<info>
+		open xcode go into settings change `deployment target` to 7.0 or above and add `[Project Name]/Plugins/com.example.hello/Bridging-Header.h` to Objective-c Bridging Header under the Swift Compiler - Code Generation options      
+    	</info>
+    <config-file target="config.xml" parent="/*">
+      <feature name="AppChange">
+        <param name="ios-package" value="HWPAppChange"/>
+      </feature>
+    </config-file>
+    
+    <header-file src="src/ios/Bridging-Header.h" />
+    <source-file src="src/ios/AppChange.swift"/>
 <!--	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
 	  <array>
 		<dict><key>CFBundleURLSchemes</key><array><string>$URL_SCHEME</string></array></dict>
