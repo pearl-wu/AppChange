@@ -2,28 +2,42 @@ import Foundation
 
  @objc(HWPAppChange) class AppChange : CDVPlugin {
     func check(command: CDVInvokedUrlCommand) {
-        var message = command.arguments[0] as! String
-        
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "check \(message)")
-        commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
+        let id = command.arguments[0] as! String
+        let URLs = command.arguments[1] as! String
+        let callsheme:NSURL = NSURL(string: id)!
+            if(UIApplication.sharedApplication().canOpenURL(callsheme)){
+                let pluginYES = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: id)
+                commandDelegate!.sendPluginResult(pluginYES, callbackId:command.callbackId)
+            }else{
+                let pluginNO = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAsString: URLs)
+                commandDelegate!.sendPluginResult(pluginNO, callbackId:command.callbackId)
+            }
     }
     func goAPPurl(command: CDVInvokedUrlCommand) {
-        var message = command.arguments[0] as! String
-        
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "goAPPurl \(message)")
-        commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
+        let id = command.arguments[0] as! String
+        let urls:NSURL = NSURL(string: "itms-apps://itunes.apple.com/app/id\(id)")!
+        if(UIApplication.sharedApplication().canOpenURL(urls)){
+            UIApplication.sharedApplication().openURL(urls)
+        }else{
+            let pluginNO = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAsString: "INSTALL APP ERROR!!")
+            commandDelegate!.sendPluginResult(pluginNO , callbackId: command.callbackId)
+        }
     }
     func toAPPopen(command: CDVInvokedUrlCommand) {
-        var message = command.arguments[0] as! String
-        
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "toAPPopen \(message)")
-        commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
+        let sheme = command.arguments[0] as! String
+        let uris:NSURL = NSURL(string: sheme)!
+        if(UIApplication.sharedApplication().canOpenURL(uris)){
+            UIApplication.sharedApplication().openURL(uris)
+        }else{
+            let pluginNO = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAsString: "OPEN APP ERROR!!")
+            commandDelegate!.sendPluginResult(pluginNO , callbackId: command.callbackId)
+        }
     }
     func Inport(command: CDVInvokedUrlCommand) {
-        var message = command.arguments[0] as! String
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport \(message)")
-        commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
+       let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport: \(userDefaults.description)")
+       commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
     }
-    
+
 }
