@@ -37,11 +37,11 @@
     
     <header-file src="src/ios/Bridging-Header.h" />
     <source-file src="src/ios/AppChange.swift"/>
-	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+<!--	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
 	  <array>
 		<dict><key>CFBundleURLSchemes</key><array><string>$URL_SCHEME</string></array></dict>
 	  </array>
-	</config-file> 
+	</config-file> -->
     </platform>
     
     <!-- Android -->
