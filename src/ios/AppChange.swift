@@ -34,10 +34,10 @@ import Foundation
         }
     }
     func Inport(command: CDVInvokedUrlCommand) {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+      // let userDefaults = NSUserDefaults.standardUserDefaults()
         
-       let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport: \(userDefaults.description)")
-       commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
+      // let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport: \(userDefaults.description)")
+      // commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
     }
 
 }
