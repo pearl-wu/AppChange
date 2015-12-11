@@ -32,7 +32,6 @@
     <config-file target="config.xml" parent="/*">
       <feature name="AppChange">
         <param name="ios-package" value="HWPAppChange"/>
-        <dict><key>CFBundleURLSchemes</key><array><string>$URL_SCHEME</string></array></dict>
       </feature>
     </config-file>
     
