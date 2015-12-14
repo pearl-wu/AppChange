@@ -14,7 +14,7 @@
     <repo>https://github.com/pearl-wu/AppChange.git</repo>
     <issue></issue>
     <license></license>
-    <preference name="URL_SCHEME" />
+   <!-- <preference name="URL_SCHEME" /> -->
 	
     <engines>
         <engine name="cordova" version=">=3.0.0" />
@@ -37,11 +37,13 @@
     
     <header-file src="src/ios/Bridging-Header.h" />
     <source-file src="src/ios/AppChange.swift"/>
+	<!--
 	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
 	  <array>
 		<dict><key>CFBundleURLSchemes</key><array><string>$URL_SCHEME</string></array></dict>
 	  </array>
 	</config-file>
+	-->
     </platform>
     
     <!-- Android -->
@@ -51,7 +53,6 @@
                 <param name="android-package" value="tw.com.bais.appchange.AppChange" />
             </feature>
         </config-file>
-		
 		<config-file target="AndroidManifest.xml" parent="/*/application/activity">
 		  <intent-filter>
 			<data android:scheme="$URL_SCHEME"/>
@@ -60,7 +61,6 @@
 			<category android:name="android.intent.category.BROWSABLE" />
 		  </intent-filter>
 		</config-file>
-        
         <source-file src="src/android/AppChange.java" target-dir="src/tw/com/bais/appchange/" />
     </platform>
     
