@@ -13,7 +13,7 @@ var AppChange = {
         );
     },
 	//不存在執行安裝
-	GOapprul:function(Scheme, successCallback, errorCallback) {
+	GOappurl:function(Scheme, successCallback, errorCallback) {
         cordova.exec(
             successCallback,
             errorCallback,
