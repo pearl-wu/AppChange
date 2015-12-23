@@ -15,7 +15,7 @@ import Foundation
     }
     func goAPPurl(command: CDVInvokedUrlCommand) {
         let id = command.arguments[0] as? String ?? ""
-        if(id != "")
+        if(id != ""){
             let urls:NSURL = NSURL(string: "itms-apps://itunes.apple.com/app/id\(id)")!
             UIApplication.sharedApplication().openURL(urls)
         }else{
