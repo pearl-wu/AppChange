@@ -33,10 +33,8 @@ import Foundation
             commandDelegate!.sendPluginResult(pluginNO , callbackId: command.callbackId)
         }
     }
-    func Inport(command: CDVInvokedUrlCommand) {
-      /* let userDefaults = NSUserDefaults.standardUserDefaults()
-       let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport: \(userDefaults.description)")
-       commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)*/
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return true;
     }
 
 }
