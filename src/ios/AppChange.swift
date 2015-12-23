@@ -2,8 +2,8 @@ import Foundation
 
  @objc(HWPAppChange) class AppChange : CDVPlugin {
     func check(command: CDVInvokedUrlCommand) {
-       let id = command.arguments[0] as! String
-        let URLs = command.arguments[1] as! String
+       let id = command.arguments[0] as? String ?? ""
+        let URLs = command.arguments[1] as? String ?? ""
         let callsheme:NSURL = NSURL(string: id)!
             if(UIApplication.sharedApplication().canOpenURL(callsheme)){
                 let pluginYES = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: id)
@@ -14,9 +14,9 @@ import Foundation
             }
     }
     func goAPPurl(command: CDVInvokedUrlCommand) {
-        let id = command.arguments[0] as! String
-        let urls:NSURL = NSURL(string: "itms-apps://itunes.apple.com/app/id\(id)")!
-        if(UIApplication.sharedApplication().canOpenURL(urls)){
+        let id = command.arguments[0] as? String ?? ""
+        if(id != "")
+            let urls:NSURL = NSURL(string: "itms-apps://itunes.apple.com/app/id\(id)")!
             UIApplication.sharedApplication().openURL(urls)
         }else{
             let pluginNO = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAsString: "INSTALL APP ERROR!!")
@@ -24,7 +24,7 @@ import Foundation
         }
     }
     func toAPPopen(command: CDVInvokedUrlCommand) {
-        let sheme = command.arguments[0] as! String
+        let sheme = command.arguments[0] as? String ?? "OPEN APP ERROR!!"
         let uris:NSURL = NSURL(string: sheme)!
         if(UIApplication.sharedApplication().canOpenURL(uris)){
             UIApplication.sharedApplication().openURL(uris)
@@ -34,10 +34,9 @@ import Foundation
         }
     }
     func Inport(command: CDVInvokedUrlCommand) {
-      // let userDefaults = NSUserDefaults.standardUserDefaults()
-        
-      // let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport: \(userDefaults.description)")
-      // commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)
+      /* let userDefaults = NSUserDefaults.standardUserDefaults()
+       let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "Inport: \(userDefaults.description)")
+       commandDelegate!.sendPluginResult(pluginResult, callbackId:command.callbackId)*/
     }
 
 }
