@@ -1,21 +1,31 @@
 import UIKit
+import WebKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    var first: COBezierDemoViewController?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        if let firstViewController = self.window?.rootViewController as? COBezierDemoViewController {
-            self.first = firstViewController
-        }
-
-        return true
+class AppDelegate: UIViewController {
+    
+    @IBOutlet var containerView : UIView! = nil
+    var webView: WKWebView?
+                            
+    override func loadView() {
+        super.loadView()
+        
+        self.webView = WKWebView()
+        self.view = self.webView!
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        var url = NSURL(string:"http://www.kinderas.com/")
+        var req = NSURLRequest(URL:url)
+        self.webView!.loadRequest(req)
     }
 
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        first?.fileurl(url)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
+    
 }
+
+
