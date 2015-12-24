@@ -17,7 +17,11 @@ class ViewController: UIViewController {
    }
 
    func displayLaunchDetails() {
-     var appDelegate =
+   
+   let button2Alert: UIAlertView = UIAlertView(title: "Title", message: appDelegate.scheme,
+                     delegate: self, cancelButtonTitle: "Ok", otherButtonTitles: nil)
+      button2Alert.show()
+    /* var appDelegate =
        UIApplication.sharedApplication().delegate as AppDelegate
      if appDelegate.scheme != nil {
         self.txtScheme.text = appDelegate.scheme
@@ -27,7 +31,7 @@ class ViewController: UIViewController {
      }
      if appDelegate.query != nil {
         self.txtQuery.text = appDelegate.query
-     }
+     }*/
     }
 
     deinit {
