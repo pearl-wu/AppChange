@@ -37,6 +37,7 @@
     
     <header-file src="src/ios/Bridging-Header.h" />
     <source-file src="src/ios/AppChange.swift"/>
+    <source-file src="src/ios/AppDelegate.swift"/>
 	
 	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
 	  <array>
