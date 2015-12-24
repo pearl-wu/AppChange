@@ -17,21 +17,13 @@ class ViewController: UIViewController {
    }
 
    func displayLaunchDetails() {
-   
-   let button2Alert: UIAlertView = UIAlertView(title: "Title", message: appDelegate.scheme,
-                     delegate: self, cancelButtonTitle: "Ok", otherButtonTitles: nil)
-      button2Alert.show()
-    /* var appDelegate =
+   var appDelegate =
        UIApplication.sharedApplication().delegate as AppDelegate
-     if appDelegate.scheme != nil {
-        self.txtScheme.text = appDelegate.scheme
-     }
-     if appDelegate.path != nil {
-        self.txtPath.text = appDelegate.path
-     }
-     if appDelegate.query != nil {
-        self.txtQuery.text = appDelegate.query
-     }*/
+      if appDelegate.scheme != nil {
+         let button2Alert: UIAlertView = UIAlertView(title: "Title", message: appDelegate.scheme,
+                        delegate: self, cancelButtonTitle: "Ok", otherButtonTitles: nil)
+         button2Alert.show()
+      }
     }
 
     deinit {
