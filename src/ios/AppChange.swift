@@ -33,8 +33,4 @@ import Foundation
             commandDelegate!.sendPluginResult(pluginNO , callbackId: command.callbackId)
         }
     }
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        return true;
-    }
-
 }
