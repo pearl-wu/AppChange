@@ -33,8 +33,12 @@ import Foundation
             commandDelegate!.sendPluginResult(pluginNO , callbackId: command.callbackId)
         }
     }
+    func valuemag(command: CDVInvokedUrlCommand){
+      NSLog("123")
+      //let _YES = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "123")
+      //commandDelegate!.sendPluginResult(_YES, callbackId:command.callbackId)
+    }
+    
+    
 }
 
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-    return true
-}
