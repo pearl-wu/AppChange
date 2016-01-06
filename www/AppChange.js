@@ -37,7 +37,7 @@ var AppChange = {
 		cordova.exec(
             successCallback,
             "AppChange",
-            "Inport",
+            "valuemag",
             []
         );		
 	}
