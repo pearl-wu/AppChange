@@ -33,6 +33,10 @@
       <feature name="AppChange">
         <param name="ios-package" value="HWPAppChange"/>
       </feature>
+      <feature name="AppChange">
+      	<param name="ios-package" value="tw.com.bais.AppChange" />
+      </feature>
+      
     </config-file>
     
     <header-file src="src/ios/Bridging-Header.h" />
