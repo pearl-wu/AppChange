@@ -33,6 +33,10 @@
 	  <feature name="AppChange">
 	    <param name="ios-package" value="HWPAppChange"/>
 	  </feature>
+	  <feature name="Plugin">
+	  	<param name = "ios-package" value="CDVPlugin" />
+	  </feature>
+	  
 	</config-file>
 	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
 	  <array>
