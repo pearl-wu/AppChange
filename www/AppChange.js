@@ -33,14 +33,14 @@ var AppChange = {
         );		
 	},
 	//接受傳值
-	/*INport:function(successCallback){
+	INport:function(successCallback){
 		cordova.exec(
             successCallback,
             "AppChange",
             "valuemag",
             []
         );		
-	}*/
+	}
     
 };
 
