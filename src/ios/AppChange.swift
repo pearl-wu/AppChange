@@ -33,11 +33,11 @@ import Foundation
             commandDelegate!.sendPluginResult(pluginNO , callbackId: command.callbackId)
         }
     }
-    func valuemag(command: CDVInvokedUrlCommand){
+   /* func valuemag(command: CDVInvokedUrlCommand){
       NSLog("123")
       //let _YES = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: "123")
       //commandDelegate!.sendPluginResult(_YES, callbackId:command.callbackId)
-    }
+    }*/
     
     
 }
