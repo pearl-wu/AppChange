@@ -14,7 +14,7 @@
     <repo>https://github.com/pearl-wu/AppChange.git</repo>
     <issue></issue>
     <license></license>
-   <!-- <preference name="URL_SCHEME" />-->
+   <preference name="URL_SCHEME" />
 	
     <engines>
         <engine name="cordova" version=">=3.0.0" />
@@ -38,10 +38,10 @@
 	
 	<source-file src="src/ios/AppChange.swift" />
 	
-	<!--<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
 	  <array><dict><key>CFBundleURLSchemes</key><array><string>$URL_SCHEME</string></array></dict></array>
-	</config-file>-->
-	<!--<header-file src="src/ios/Bridging-Header.h" />-->
+	</config-file>
+	<header-file src="src/ios/Bridging-Header.h" />
         
     </platform>
     
